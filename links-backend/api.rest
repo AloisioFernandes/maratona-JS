@@ -1,0 +1,69 @@
+@baseUrl = http://localhost:3001
+@contentType = application/json
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTU5MzU5NjM2MCwiZXhwIjoxNTkzNTk4MTYwfQ.s32CVVycF37UNQZ7-LFASzvvTIZ4tgl8EGwvTgGtAOQ
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidmVyc2lvbiI6MCwiaWF0IjoxNTkzNjA0OTgxLCJleHAiOjE1OTYxOTY5ODF9.UFWMiW88jO1nWyg8-JZDqWvwqao_6ZcuuLEgWEQMZic
+
+### Create a Account
+POST {{baseUrl}}/auth/sign-up
+Content-Type: {{contentType}}
+
+{
+    "email": "aloFer029@gmail.com",
+    "password": "123456",
+    "password_confirmation": "123456"
+}
+
+
+### Sign in
+POST {{baseUrl}}/auth/sign-in
+Content-Type: {{contentType}}
+
+{
+    "email": "aloFer029@gmail.com",
+    "password": "123456"
+}
+
+
+### Refresh
+POST {{baseUrl}}/auth/refresh
+Content-Type: {{contentType}}
+Authorization: Bearer {{refreshToken}}
+
+
+### List Links
+GET {{baseUrl}}/link
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+
+### Create Link
+POST {{baseUrl}}/link
+Content-Type: {{contentType}}
+
+{
+  "label": "Meu site 2",
+  "url": "https://alofer.com",
+  "isSocial": false
+}
+
+
+### Get a link by Id
+GET {{baseUrl}}/link/1
+Content-Type: {{contentType}}
+
+
+### Update a Link
+PUT {{baseUrl}}/link/1
+Content-Type: {{contentType}}
+
+{
+  "label": "Meu novo site",
+  "url": "http://facebook.com",
+  "isSocial": true
+}
+
+
+### Delete a Link
+DELETE {{baseUrl}}/link/7
+Content-Type: {{contentType}}
